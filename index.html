@@ -1,12 +1,27 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="en">
   <head>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>UI Design Challenge</title>
-    <script src="./index.js" type="module"></script>
+    <link rel="stylesheet" href="./src/styles.css" />
+    <script src="./src/index.js" type="module"></script>
   </head>
+
   <body>
-    <challenge-table></challenge-table>
+    <div class="select-input-container">
+      <challenge-select></challenge-select>
+      <div class="input-btn-container">
+        <label for="streaming-rate">Streaming rate:</label>
+        <input type="number" name="rate" id="streaming-rate" value="4" />
+        <button id="start-streaming">Start</button>
+        <button id="stop-streaming">Stop</button>
+        <button id="reset-streaming">Reset</button>
+      </div>
+    </div>
+    <div class="table-and-chart">
+      <challenge-chart></challenge-chart>
+      <challenge-table></challenge-table>
+    </div>
   </body>
 </html>
