@@ -16,10 +16,7 @@ const dataService = new ChallengeDataService();
 const challengeTable = document.querySelector("challenge-table");
 const challengeChart = document.querySelector("challenge-chart");
 const challengeSelect = document.querySelector("challenge-select");
-const streamingRateInput = document.getElementById("streaming-rate");
-const startStreamingButton = document.getElementById("start-streaming");
-const stopStreamingButton = document.getElementById("stop-streaming");
-const resetStreamingButton = document.getElementById("reset-streaming");
+const challengeContainer = document.querySelector(".challenge-container");
 
 // STREAMING CALLBACK
 function callback(x, y) {
@@ -74,7 +71,10 @@ async function setData() {
 
 // SET DOM ELEMENT EVENT FUNCTIONS
 challengeSelect.oninput = () => setData();
-startStreamingButton.onclick = () =>
-  dataService.startStreaming(streamingRateInput.value, callback);
-stopStreamingButton.onclick = () => dataService.stopStreaming();
-resetStreamingButton.onclick = () => handleResetStreaming();
+
+// SET EVENT LISTENERS FOR STREAMING BUTTONS
+document.addEventListener("stream-start", (e) =>
+  dataService.startStreaming(e.detail.rate.value, callback)
+);
+document.addEventListener("stream-stop", () => dataService.stopStreaming());
+document.addEventListener("stream-reset", () => handleResetStreaming());
