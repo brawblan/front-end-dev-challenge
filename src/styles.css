@@ -1,0 +1,45 @@
+.challenge-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  width: 100%;
+  gap: 1rem;
+}
+
+.select-chart-container {
+  position: sticky;
+  top: 0;
+  flex: 1;
+  width: 100%;
+}
+
+challenge-chart {
+  display: block;
+  width: 100%;
+  background-color: white;
+}
+
+challenge-table {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+}
+
+@media (width < 1000px) {
+  .challenge-container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  challenge-select {
+    text-align: center;
+  }
+
+  challenge-chart {
+    width: 100%;
+    margin: 0 auto;
+  }
+}

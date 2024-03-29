@@ -1,4 +1,4 @@
-import { LitElement, html, css } from 'lit';
+import { LitElement, html, css } from "lit";
 
 import {
   Chart,
@@ -7,7 +7,7 @@ import {
   LineController,
   PointElement,
   LineElement,
-} from 'chart.js';
+} from "chart.js";
 
 class ChallengeChart extends LitElement {
   static get styles() {
@@ -31,12 +31,26 @@ class ChallengeChart extends LitElement {
     this.chartOptions = {
       responsive: true,
       maintainAspectRatio: false,
-      type: 'line',
+      type: "line",
       data: [],
       options: {
         scales: {
-          x: { display: true, type: 'linear', position: 'bottom', axis: 'x', min: 0, max: 1 },
-          y: { display: true, type: 'linear', position: 'left', axis: 'y', min: 0, max: 1 },
+          x: {
+            display: true,
+            type: "linear",
+            position: "bottom",
+            axis: "x",
+            min: 0,
+            max: 1,
+          },
+          y: {
+            display: true,
+            type: "linear",
+            position: "left",
+            axis: "y",
+            min: 0,
+            max: 1,
+          },
         },
       },
       plugins: {
@@ -46,26 +60,29 @@ class ChallengeChart extends LitElement {
         Filler: false,
       },
     };
-    this.chart = new Chart(this.shadowRoot.querySelector('#chart'), this.chartOptions);
+    this.chart = new Chart(
+      this.shadowRoot.querySelector("#chart"),
+      this.chartOptions
+    );
   }
 
   updated(changedProperties) {
-    if (changedProperties.has('data')) this._updateData();
+    if (changedProperties.has("data")) this._updateData();
   }
 
   async _updateData() {
     const datasets = [
       {
-        type: 'line',
-        backgroundColor: 'white',
-        borderColor: 'red',
+        type: "line",
+        backgroundColor: "white",
+        borderColor: "red",
         data: this.data,
         showLine: true,
-        yAxisID: 'y',
+        yAxisID: "y",
       },
     ];
-    const xPoints = this.data.map(point => point.x);
-    const yPoints = this.data.map(point => point.y);
+    const xPoints = this.data.map((point) => point.x);
+    const yPoints = this.data.map((point) => point.y);
     const minX = Math.min(...xPoints);
     const maxX = Math.max(...xPoints);
     const minY = Math.min(...yPoints);
@@ -83,4 +100,4 @@ class ChallengeChart extends LitElement {
     return html`<canvas id="chart"></canvas>`;
   }
 }
-customElements.define('challenge-chart', ChallengeChart);
+customElements.define("challenge-chart", ChallengeChart);
