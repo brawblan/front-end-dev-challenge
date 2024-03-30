@@ -1,0 +1,73 @@
+.table-and-chart {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+}
+
+challenge-chart {
+  background-color: white;
+  position: sticky;
+  top: 7rem;
+  margin-top: 84px;
+  width: 50%;
+  align-self: flex-start;
+}
+
+challenge-table {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+challenge-chart:has(challenge-select:not([size='stream'])) {
+  top: 0;
+}
+
+.select-input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: sticky;
+  top: 0;
+  height: 6rem;
+  padding-top: 1rem;
+}
+
+challenge-select:not([size='stream'])+.input-btn-container {
+  display: none;
+}
+
+footer {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  bottom: 1rem;
+}
+
+@media (width < 1000px) {
+  challenge-select {
+    text-align: center;
+  }
+
+  .table-and-chart {
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  challenge-chart {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .select-input-container {
+    background-color: white;
+  }
+
+  footer {
+    margin-top: 1rem;
+    position: relative;
+    bottom: 0;
+  }
+}
